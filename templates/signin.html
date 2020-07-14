@@ -1,0 +1,36 @@
+<div class="signin">
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+<nav style="width:100%;background-color:#E7CFCD;height:12%;display:flex;flex-direction:row;justify-content:space-between;">
+<img src="{% static "apw.png" %}" alt="alliance" width="120" height="80" />
+<p style="text-align:center;font-size:37px;color:#371D1B;padding-top:0.5%;"><strong>Kontrol Tablosu</strong></p>
+<img src="{% static "alliance.png" %}" alt="alliance" width="120" height="80" />
+</nav>
+<div class="signin" style="width:50%;margin-right:25%;margin-left:25%;">
+<div style="width:50%;margin-right:25%;margin-left:25%;margin-top:10%;">
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1"><strong>Email</strong></label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1"><strong>Şifre</strong></label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Şifre">
+  </div>
+ 
+  <button  type="button" class="btn btn-secondary" style="position:absolute;right:37.5%;margin-top:2%;">
+  <a href="{%url 'ekle'%} " style="color:white;">Giriş</a></button>
+  <hr><p><a href="{%url 'signup'%}" style="color:#0D47A1;font-size:13px;">Hesap Oluştur</a> </p>
+</form>
+  
+    
+</div>
+</div>
+    
+
+{% endblock body %}
+
+</div>

@@ -1,0 +1,2650 @@
+{% extends "layout.html" %}
+{% block body %}
+{%load static%}
+<nav style="width:100%;background-color:#E7CFCD;height:12%;display:flex;flex-direction:row;justify-content:space-between;">
+<img src="{% static "apw.png" %}" alt="alliance" width="118" height="80" />
+<button class="btn-sign-out"><a href="{%url 'signin' %}"><strong>Çıkış</strong></a></button>
+<img src="{% static "alliance.png" %}" alt="alliance" width="118" height="80" />
+</nav>
+
+<div style="display:flex;flex-direction:row;justify-content:space-between;width:100%;">
+<!--cuet-->
+<form method="POST" style="width:27%;">
+
+    {% csrf_token %}
+
+    <div style="margin-left:3%;margin-top:1%;">
+    <table class="table-striped" >
+    <tr>
+    <td><strong>Cuet</strong></td>
+    <td>
+	  <input class="form-control"type="text" name="cuet" value="{{ q.cuet }}"/>
+	</td>
+  </tr>
+  <tr>
+  <td>
+  <strong>Uet</strong>
+  </td>
+  <td><input class="form-control" type="text" name="uet" value="{{q.uet}}"/></td>
+  
+  </tr>
+  <tr>
+  <td>
+  <strong>Atölye</strong>
+  </td>
+  <td><input class="form-control" type="text" name="atolye" value="{{q.atolye}}"/></td>
+  </tr>
+  <tr>
+  <td>
+ <strong> Ca</strong>
+  </td>
+  <td><input class="form-control"  type="text" name="ca" value="{{q.ca}}"/></td>
+  
+  </tr> 
+  <tr>
+  <td>
+ <strong> Ay</strong>
+  </td>
+  <td><input class="form-control"  type="text" name="ca" value="{{q.ca}}"/></td>
+ 
+  </tr> 
+
+  
+  <tr align="right">
+      <td>  
+      </td>
+      <td>
+          <button class="btn btn-secondary btn-sm" style="margin-top:3%;"><strong>Kaydet</strong></button>
+      </td>
+    </table>
+</form>
+</div>
+ <!--amaç-->
+ 
+<div style="display:flex;flex-direction:column;height:12%;font-size:11px;margin-left:%;margin-top:0.5%;
+width:33%;background-color:#D3D3D3;padding:0.5%;margin-right:1%;border-radius:7px;">
+<div ><strong><u>Amaç:</u></strong></div>
+<div>- Gerçekleştirilen operasyonların kalitesini düzenli olarak kontrol etmek ve böylece üretimin kalitesini sağlamak.</div>
+<strong><u>Öneriler:</u> </strong>
+<div>- Kontrol Tablısu 10-12 kontrolden fazla kontrol içermemelidir.Yoksa UET şefi kontrolleri gerçekleştiremez.</div>
+<div>- Kontrol tablosu bir çalışma dökümanıdır.Bu nedenle bu döküman yeni problemler ortaya çıktığında güncellenebilir.</div>
+<div>- Kontroller belirlenirken aşağıdakiler dikkate alınır:</div>
+  <div style="display:flex;flex-direction:column;margin-left:3%;"> 
+  
+      <div>- Kalite gözlem planı (PdS) / Ekipmanların kontrolleri</div>
+        <div>- FOS lar (CSR/ Panne immo(yolda bırakan arıza))</div>
+        <div>- Kalite Hataları</div>
+        <div>- Yeni operatörler</div>
+        <div>- Daha sonraki proseslerde ulaşılması zor olan kontrol noktaları</div>
+  </div>
+
+</div>
+<!--kritiklik-->
+<div style="width:33%;font-size:11px;margin-right:1%;display:flex;flex-direction:column;justify-content:space-between;margin-top:0.5%;"><div style="border:0.5px solid black;padding:0.5%;">
+<div>
+<strong><u>Kritiklik Kotasyonu</u> </strong>
+</div>
+
+<div style="display:flex;flex-direction:row;justify-content:space-between;">
+
+<div style="width:18%;height:30%;"><strong><u>Kritiklik:</u></strong></div>
+
+<div style="display:flex;flex-direction:column;justify-content:space-between;width:90%;height:30%;">
+<div style=""><strong> A: &nbsp;</strong> CSR veya Panne Immo(yolda bırakana rıza)</div>
+<div><strong> B: &nbsp;</strong> A kritiklik seviyesinden farklı diğer önemli fonksiyonel karakteristikler</div>
+<div><strong> C: &nbsp;</strong>Kalite hataları (proses içinde/müşteri) /Diğer problemler</div>
+<div><strong> D: &nbsp;</strong>UET'ye ait tekrarlayan problemler</div>
+
+</div></div>
+
+<div style="display:flex;flex-direction:row;">
+<div> <strong><u> Frekans: </u>&nbsp; &nbsp; &nbsp;</strong></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ekipte/haftada/ayda x defa</div>
+</div></div>
+<div>- Hücre içersinde değerlendirmenin OK veya NOK olduğu kaydedilmelidir.</div>
+<div>- Sonuçlar seçilen ölçüm frekansı ile uyumlu olmalıdır.Örneğin: Günde 1 defa ölçüm tanımlandıysa günde 1 defa sonuç görmeliyiz.</div>
+<div>- Değerlerin kaydedilmesi gerekli ise, örneğin sıkma torku, tabloda gözükmelidir.</div>
+</div>
+
+</div>
+
+<hr>
+
+<table>
+<form>
+<div style="display:flex;flex-direction:row;justify-content:space-between;width:150%;margin-left:1%;height:150%;">
+  <div style="width:3%;font-size:14px"><strong>
+  <label ><u>N° </u></label>
+     <div style="display:flex;flex-direction:column;justify-content:space-between;text-align:left;"> 
+     <div style="padding-top: 18%;">1</div><div style="padding-top:18%;">2</div><div style="padding-top:18%;">3</div><div style="padding-top:18%;">4</div><div style="padding-top:18%;">5</div><div style="padding-top:18%;">6</div><div style="padding-top:18%;">7</div><div style="padding-top:18%;">8</div> 
+     <div style="padding-top:18%;">9</div><div style="padding-top:18%;">10</div><div style="padding-top:18%;">11</div><div style="padding-top:18%;">12</div>
+</strong>
+
+      </div>
+    </div>
+
+    <div  style="text-align:center;font-size:14px"> <strong>
+      <label><u>Kontrol Noktası</u></label></strong>
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+   
+    </div>
+
+ <div style="width:6%;text-align:center;font-size:14px"> <strong>
+    <label ><u> Kritiklik</u></label></strong>
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+   
+    </div>
+    <div style="width:6%;text-align:center;font-size:14px"> <strong>
+    <label ><u> Frekans</u></label></strong>
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+   
+    </div>
+<div style="width:11%;text-align:center;font-size:14px"> <strong>
+    <label ><u> Kontrol Metodu</u></label></strong>
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+     <input type="text" class="form-control" ><input type="text" class="form-control" >
+   
+    </div>
+
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 1</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 2</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 3</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 4</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 5</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 6</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 7</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+
+<div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 8</u></label></strong>
+   <input style="margin-top: 15%;margin-right:-5%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+ <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 9</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+  <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 10</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+  <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 11</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+ 
+  <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 12</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+  <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 13</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;font-size:14px"> <strong>
+ <label  ><u> 14</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 15</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 16</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 17</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+    <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 18</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+    <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 19</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+    <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 20</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+    <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 21</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 22</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 23</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 24</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 25</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 26</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 27</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 28</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 29</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 30</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+   <div class="col" style="display:flex;flex-direction:column;"> <strong>
+ <label  ><u> 31</u></label></strong>
+   <input style="margin-top: 15%;" type="checkbox" ><input style="margin-top: 32%;"type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input  style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+   <input style="margin-top: 32%;"  type="checkbox" ><input style="margin-top: 32%;" type="checkbox" ><input style="margin-top: 32%;" type="checkbox" >
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</form>
+
+
+</table>
+
+
+
+
+
+
+    
+<!-- tablo-->
+<!--
+<div class="table-control"style="margin-top:2%;" >
+<table class="" style="width:300%">
+<thead>
+<div style="display:flex;justify-content:space-between;width:100%;flex-direction:row;padding:10px">
+<tr>
+        <th style="width:1%;">N° </th>
+       
+        <th style="width:1%;">&nbsp; Kontrol Noktası</th>
+        <th style="width:1%;">&nbsp; Kritiklik</th>
+        <th style="width:1%;">&nbsp; Frekans</th>
+        <th style="width:1%;">&nbsp; Kontrol Metodu</th>
+        <th style="width:1%;">1</th><th style="width:1%;">2</th><th style="width:5%;">3</th><th style="width:5%;">4</th><th style="width:5%;">5</th><th style="width:5%;">6</th><th style="width:5%;">7</th><th style="width:5%;"> 8</th><th style="width:5%;">9</th><th style="width:5%;">10</th ><th style="width:5%;">11</th><th style="width:5%;">12</th><th style="width:5%;">13</th><th style="width:5%;" >14</th><th style="width:5%;">18</th><th style="width:5%;">16</th><th style="width:5%;">18</th><th style="width:5%;">18</th><th style="width:5%;">19</th><th style="width:5%;">18</th><th style="width:5%;">21</th><th style="width:5%;">22</th><th style="width:5%;">18</th><th style="width:5%;">24</th><th style="width:5%;">18</th><th style="width:5%;">26</th><th style="width:5%;">27</th><th style="width:5%;">28</th><th style="width:5%;">29</th><th style="width:5%;">30</th><th style="width:5%;">31</th>
+</tr></div>
+<thead>
+<tbody>
+<tr>
+    <th style="width:5%;">1</th>
+    <td style="width:5%;"><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+
+    <tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+   <tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr>
+    <th>1</th>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="text" class="genislik" name="kontrolnoktasi" ></td>
+    <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+       <td><input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    <input type="checkbox" class="genislik" name="kontrolnoktasi" >
+    </td>
+    
+    
+</tr>
+<tr style="width:5px;">
+    <th>12</th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th> <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+   <th> 
+    <input type="text" class="genislik" ></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th><th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+    <th><input type="text" class="genislik" name="kontrolnoktasi"></th>
+</tr>
+</tbody>
+
+
+
+</table>
+
+<button class="btn btn-secondary btn-sm"  style="margin-top:3%;position:absolute;right:0px;float:right;">Kaydet</button>
+</div>
+-->
+
+
+
+<!--css-->
+<style>
+.btn-sign-out{
+    position:absolute;
+    right:180px;
+    margin-top:18px;
+    align:right;
+    color:black;
+    width:5%;
+    padding:10px;
+    border-radius:18px;
+    font-size:13px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    background-color:#E0E0E0;
+
+
+}
+a{
+  color:
+		#0D47A1;
+}
+</style>
+
+{% endblock body %} 

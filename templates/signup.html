@@ -1,0 +1,72 @@
+<div class="signup">
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+<nav style="width:100%;background-color:#E7CFCD;height:12%;display:flex;flex-direction:row;justify-content:space-between;">
+<img src="{% static "apw.png" %}" alt="alliance" width="120" height="80" />
+<p style="text-align:center;font-size:37px;color:#371D1B;padding-top:0.5%;"><strong>Kontrol Tablosu</strong></p>
+<img src="{% static "alliance.png" %}" alt="alliance" width="120" height="80" />
+</nav>
+<div class="sign-up-form">
+
+<h1>Üye Ol</h1>
+<form>
+
+
+<label for="exampleInputEmail1"><strong>Email</strong></label>
+<input type="email" class="input-box" placeholder="Email"> 
+<label for="exampleInputPassword1"><strong>Şifre </strong></label>
+<input type="password" class="input-box" placeholder="Şifre"> 
+<button type=  "button" class="signup-btn">Üye Ol</button>
+<hr>
+<p style="font-size:13px;">Zaten bir hesabın var mı? <a  href="{% url 'signin' %}"> <u>Giriş Yap</u></a>
+</form>
+
+
+</div>
+<style>
+.sign-up-form{
+width:300px;
+background:			#A9A9A9;
+border-radius:10px;
+padding:20px;
+margin:5% auto;
+text-align:center;
+}
+.sign-up-form h1{
+color: #371D1B;
+
+
+
+}
+.input-box{
+    border-radius:20px;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #999;
+    outline:none;
+
+}
+button{
+
+    color:black;
+    width:100%;
+    padding:10px;
+    border-radius:20px;
+    font-size:15px;
+    margin:10px 0;
+    border:none;
+    outline:none;
+    cursor:pointer;
+
+
+}
+.signup-btn{
+    background-color:#E0E0E0;
+}
+a{color:
+		#0D47A1;}
+</style>
+{% endblock body %}
+</div>
+
